@@ -107,5 +107,8 @@
       }
     }
   },
-  "defaultProject": "todo-sample-ngrx"
+  "defaultProject": "todo-sample-ngrx",
+  "cli": {
+    "defaultCollection": "@ngrx/schematics"
+  }
 }
