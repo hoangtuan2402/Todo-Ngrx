@@ -1,0 +1,17 @@
+npm i tailwindcss -D
+npx tailwindcss init
+ng add @ngrx/store@latest
+ng add @ngrx/effects@lates
+ng add @ngrx/entity@latest
+ng add @ngrx/store-devtools@latest
+ng g c pages/home -m app
+ng g m modules/auth
+ng g m modules/todo
+ng g m modules/auth/pages/login -m auth
+ng g c modules/auth/pages/login -m auth
+ng g guard modules/auth/guards/signedIn
+ng g guard modules/auth/guards/signedOut
+ng g c modules/todo/pages/TodoMain -m todo
+ng g c modules/todo/components/Header -m todo
+ng g c modules/todo/components/todo-list -m todo
+ng g c modules/todo/components/todo -m todo
