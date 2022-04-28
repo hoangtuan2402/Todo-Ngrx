@@ -16,4 +16,7 @@ ng g c modules/todo/components/Header -m todo
 ng g c modules/todo/components/todo-list -m todo
 ng g c modules/todo/components/todo -m todo
 ng g c modules/todo/components/todo-form -m todo
+ng g s modules/auth/services/auth
+ng g s modules/todo/services/todo
+ng g action modules/auth/store/checkAuth
 
