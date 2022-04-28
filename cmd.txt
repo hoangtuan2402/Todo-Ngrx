@@ -15,3 +15,5 @@ ng g c modules/todo/pages/TodoMain -m todo
 ng g c modules/todo/components/Header -m todo
 ng g c modules/todo/components/todo-list -m todo
 ng g c modules/todo/components/todo -m todo
+ng g c modules/todo/components/todo-form -m todo
+
