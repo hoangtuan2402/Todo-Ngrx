@@ -19,4 +19,15 @@ ng g c modules/todo/components/todo-form -m todo
 ng g s modules/auth/services/auth
 ng g s modules/todo/services/todo
 ng g action modules/auth/store/checkAuth
+ng g action modules/todo/store/actions/getTodo
+ng g action modules/todo/store/actions/addTodo
+ng g action modules/todo/store/actions/updateTodo
+ng g action modules/todo/store/actions/deleteTodo
+ng g action modules/todo/effects/actions/deleteTodo
 
+ng g effect modules/todo/store/effects/addTodo
+ng g effect modules/todo/store/effects/getTodo
+ng g effect modules/todo/store/effects/updateTodo
+
+ng g selector modules/todo/store/selectors/todo
+ng g reducer modules/todo/store/reducers/todo

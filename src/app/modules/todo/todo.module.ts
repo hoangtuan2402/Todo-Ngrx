@@ -6,7 +6,17 @@ import { HeaderComponent } from './components/header/header.component';
 import { TodoListComponent } from './components/todo-list/todo-list.component';
 import { TodoComponent } from './components/todo/todo.component';
 import { TodoFormComponent } from './components/todo-form/todo-form.component';
-
+import { EffectsModule } from '@ngrx/effects';
+import { GetTodoEffects } from './store/effects/get-todo.effects';
+import { AddTodoEffects } from './store/effects/add-todo.effects';
+import { UpdateTodoEffects } from './store/effects/update-todo.effects';
+import { DeleteTodoEffects } from './store/effects/delete-todo.effects';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { StoreModule } from '@ngrx/store';
+import { todoFeatureKey, todoReducer } from './store/reducers/todo.reducer';
+import { TodoService } from './services/todo.service';
+import { SignedInGuard } from '../auth/guards/signed-in.guard';
+import { SignedOutGuard } from '../auth/guards/signed-out.guard';
 const routes: Routes = [
   {
     path: '',
@@ -24,7 +34,20 @@ const routes: Routes = [
     TodoFormComponent
   ],
   imports: [
-    CommonModule, RouterModule.forChild(routes)
-  ]
+    CommonModule,
+    RouterModule.forChild(routes),
+    EffectsModule.forFeature([
+      GetTodoEffects,
+      AddTodoEffects,
+      DeleteTodoEffects,
+      AddTodoEffects,
+      UpdateTodoEffects
+
+    ]),
+    StoreModule.forFeature(todoFeatureKey, todoReducer),
+    ReactiveFormsModule,
+    FormsModule,
+  ],
+
 })
-export class TodoModule { }
+export class TodoModule {}
