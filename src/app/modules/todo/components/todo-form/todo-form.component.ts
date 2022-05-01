@@ -1,8 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { Store } from '@ngrx/store';
-import { AddTodos } from '../../store/actions/add-todo.actions';
+import { loadAddTodos } from '../../store/actions/add-todo.actions';
 import { TodoState } from '../../store/reducers/todo.reducer';
+import { loadGetTodos } from '../store/actions/get-todo.actions';
 
 @Component({
   selector: 'app-todo-form',
@@ -25,8 +26,10 @@ export class TodoFormComponent implements OnInit {
       const text: string = this.todoForm.get('text')?.value as string;
 
       if (text.length !== 0) {
-        this.todoStore.dispatch(AddTodos({ titile: text }));
+        this.todoStore.dispatch(loadAddTodos({ todoText: text }));
         this.todoForm.reset();
+        this.todoStore.dispatch(loadGetTodos());
+        
       }
     }
   }

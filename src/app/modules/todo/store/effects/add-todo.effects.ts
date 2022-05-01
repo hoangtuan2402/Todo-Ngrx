@@ -10,7 +10,7 @@ import {
 
 @Injectable()
 export class AddTodoEffects {
-  constructor(private actions$: Actions, private todoService: TodoService) {}
+  constructor(private actions$: Actions, private todoService: TodoService ) {}
 
   public getTodos$ = createEffect(() => {
     return this.actions$.pipe(
