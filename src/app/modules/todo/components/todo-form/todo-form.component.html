@@ -1,5 +1,5 @@
 <div class=" flex items-center justify-center">
-    <form class="flex items-center justify-center">
+    <form class="flex items-center justify-center"  [formGroup]="todoForm"(ngSubmit)="submit()">
         <div class="w-full">
             <input type="text" class=" rounded-l-lg border-none p-2 focus:outline-none focus:ring-0 focus:ring-offset-0 shadow-xl font-semibold text-black  placeholder-gray-500 bg-gray-200 " placeholder="Enter Todo" formControlName="text" />
         </div>

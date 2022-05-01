@@ -1,38 +1,26 @@
+import { Injectable } from '@angular/core';
+import { Actions, createEffect, ofType } from '@ngrx/effects';
+import { mergeMap } from 'rxjs/operators';
+import { TodoService } from '../../services/todo.service';
 import {
-    Injectable
-}
-from '@angular/core';
-import { async } from '@angular/core/testing';
-import {
-    Actions, createEffect, ofType
-}
-from '@ngrx/effects';
-import { mergeMap, of } from 'rxjs';
-import {
-    TodoService
-}
-from '../../services/todo.service';
-import {
-AddTodos,
-AddTodosFailure,
-AddTodosSuccess
+  loadAddTodos,
+  loadAddTodosFailure,
+  loadAddTodosSuccess,
 } from '../actions/add-todo.actions';
 
+@Injectable()
+export class AddTodoEffects {
+  constructor(private actions$: Actions, private todoService: TodoService) {}
 
-@Injectable() export class AddTodoEffects {
-
-    constructor(private actions$: Actions, private todoServices: TodoService) {}
-
-    public getTodo = createEffect(()=>{ 
-      return this.actions$.pipe(
-        ofType(AddTodos),
-        mergeMap(async (action) => {
-          return this.todoServices
-          .addTodo(action.titile)
-          .then(()=> AddTodosSuccess())
-          .catch((e)=> AddTodosFailure({error: e}))
-
-        })
-      )
-    });
+  public getTodos$ = createEffect(() => {
+    return this.actions$.pipe(
+      ofType(loadAddTodos),
+      mergeMap(async (action) => {
+        return this.todoService
+          .addTodo(action.todoText)
+          .then(() => loadAddTodosSuccess())
+          .catch((e) => loadAddTodosFailure({ error: `${e}` }));
+      })
+    );
+  });
 }

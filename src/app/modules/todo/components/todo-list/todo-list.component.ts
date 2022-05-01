@@ -12,13 +12,13 @@ import { getTodos } from '../../store/selectors/todo.selectors';
   styleUrls: ['./todo-list.component.scss']
 })
 export class TodoListComponent implements OnInit {
-  public todos: Observable<TodoModel[]>;
+  public todos = this.todoStore.select(getTodos);
 
   constructor(private todoStore: Store<TodoState>) {}
 
   ngOnInit(): void {
     this.todoStore.dispatch(GetTodos());
-    this.todos = this.todoStore.select(getTodos);
-    console.log(this.todos);
+    // this.todos = this.todoStore.select(getTodos);
+    
   }
 }

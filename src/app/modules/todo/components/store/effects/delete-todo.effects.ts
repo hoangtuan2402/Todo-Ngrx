@@ -1,25 +1,25 @@
 import { Injectable } from '@angular/core';
 import { Actions, createEffect, ofType } from '@ngrx/effects';
 import { mergeMap } from 'rxjs/operators';
-import { TodoService } from '../../services/todo.service';
+import { TodoService } from '../../../services/todo.service';
 import {
-  loadUpdateTodos,
-  loadUpdateTodosFailure,
-  loadUpdateTodosSuccess,
-} from '../actions/update-todo.actions';
+  loadDeleteTodos,
+  loadDeleteTodosFailure,
+  loadDeleteTodosSuccess,
+} from '../actions/delete-todo.actions';
 
 @Injectable()
-export class UpdateTodoEffects {
+export class DeleteTodoEffects {
   constructor(private actions$: Actions, private todoService: TodoService) {}
 
   public getTodos$ = createEffect(() => {
     return this.actions$.pipe(
-      ofType(loadUpdateTodos),
+      ofType(loadDeleteTodos),
       mergeMap(async (action) => {
         return this.todoService
-          .updateTodo(action.todo.id)
-          .then(() => loadUpdateTodosSuccess())
-          .catch((e) => loadUpdateTodosFailure({ error: `${e}` }));
+          .deleteTodo(action.todo.id)
+          .then(() => loadDeleteTodosSuccess())
+          .catch((e) => loadDeleteTodosFailure({ error: `${e}` }));
       })
     );
   });

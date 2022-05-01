@@ -21,12 +21,15 @@ from 'src/app/models/todo.model';
     }
 
     public async addTodo(title: String):Promise<void > {
+        console.log("Go Services");
         const newTodo:TodoModel= {
             id: (Math.random() * 20).toString(),
             text: title,
             completed: false
         };
-        this.todos.push(newTodo);
+        this.todos = [...this.todos, newTodo];
+        console.log(this.todos);
+        
     }
 
     async updateTodo(id: String):Promise<void > {
@@ -38,6 +41,7 @@ from 'src/app/models/todo.model';
     }
     async deleteTodo(id: String):Promise<void > {
         this.todos = this.todos.filter((val) => val.id !== id);
+        console.log(this.todos);
     }
 
 

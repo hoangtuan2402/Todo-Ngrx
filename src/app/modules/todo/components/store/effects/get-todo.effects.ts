@@ -3,7 +3,7 @@ import { Actions, createEffect, ofType } from '@ngrx/effects';
 import { of } from 'rxjs';
 
 import { catchError, map, mergeMap } from 'rxjs/operators';
-import { TodoService } from '../../services/todo.service';
+import { TodoService } from '../../../services/todo.service';
 import {
   loadGetTodos,
   loadGetTodosFailure,
