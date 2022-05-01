@@ -47,6 +47,6 @@ const routes: Routes = [
     ReactiveFormsModule,
     FormsModule,
   ],
-  providers: [TodoService],
+  
 })
 export class TodoModule {}

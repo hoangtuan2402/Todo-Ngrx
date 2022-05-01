@@ -36,7 +36,7 @@ import { TodoService } from './modules/todo/services/todo.service';
     EffectsModule.forFeature([GetTodoEffects]),
     
   ],
-  providers: [TodoService],
+  
   bootstrap: [AppComponent]
 })
 export class AppModule { }
